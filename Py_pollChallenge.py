@@ -66,7 +66,7 @@ with open(file_to_load) as election_data:
                 # 5: add a vote to that county's vote count.
         county_votes[county_name] += 1
 # Save the results to our text file
-with open(file_to_save, "w") as election_results.txt :
+with open(file_to_save, "w") as election_output_file:
     # Print the final vote count (to terminal)
     election_results = (
         f"\nElection Results\n"
@@ -79,7 +79,7 @@ with open(file_to_save, "w") as election_results.txt :
         f"------------------------\n")
         
     print(election_results, end="")
-    election_results.write(election_results)
+    election_output_file.write(election_results)
     # 6a: write a for loop to get the county from the county dictionary
     for county_name in county_votes:
         # 6b: Retrieve the vote of the county
@@ -90,7 +90,7 @@ with open(file_to_save, "w") as election_results.txt :
         print((f"{county_name}: {county_percentage:.1f}% ({votes:,})\n"))
     print(county_results, end="")
     # 6e: Save the county votes to a text file
-    election_results.write(county_results)
+    election_output_file.write(county_results)
     # 6f: Write an if statement to determine the winning county and its votes 
     # See line 118
 for canidate_name in candidate_votes:
