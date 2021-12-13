@@ -93,21 +93,25 @@ with open(file_to_save, "w") as election_output_file:
             largest_county = v
             winning_county = county_name
             county_turnout = county_percentage
-  
+    
     #7: Print the county with the largest turnout in the terminal
 # Determine the percentage of votes for each candidate by looping through the counts.
 # Iterate through the candidate list.
-    turnout_summary = (f"-----------------------\n"
-    f"Largest County Turnout: {winning_county}\n"
-    f"------------------------\n")
+        turnout_summary = (f"-----------------------\n"
+        f"Largest County Turnout: {winning_county}\n"
+        f"------------------------\n")
     print(turnout_summary)
+    election_output_file.write(turnout_summary)
 # Save the final Candidate vote count to text file
     for candidate_name in candidate_votes:
         # Retrieve vote count of a candidate.
         votes = candidate_votes[candidate_name]
         # Calculate the percentage of votes.
         vote_percentage = float(votes) / float(total_votes) * 100
+        percent_x = (f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+
         print(f"{candidate_name}: {vote_percentage:.1f}% ({votes:,})\n")
+        election_output_file.write(percent_x)
         # Determine if the votes is greater than the winning count.
         if (votes > winning_count) and (vote_percentage > winning_percentage):
             winning_count = votes
@@ -122,11 +126,12 @@ with open(file_to_save, "w") as election_output_file:
         f"Winning Vote Count: {winning_count:,}\n"
         f"Winning Percentage: {winning_percentage:.1f}%\n"
         f"-------------------------\n")
-    with open(file_to_save, "w") as election_output_file:
+    #with open(file_to_save, "w") as election_output_file:
         #election_output_file.write(results)
         #election_output_file.write(county_results)
         #election_output_file.write(turnout_summary)
         #election_output_file.write(winning_candidate_summary)
-        print(winning_candidate_summary)
+    print(winning_candidate_summary)
+    election_output_file.write(winning_candidate_summary)
 
         
